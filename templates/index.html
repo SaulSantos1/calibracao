@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="stylesheet" href="static\entrar.css">
+    <link rel="shortcut icon" type="imagex/png" href="static\SELO 50 ANOS ISOLADO_Prancheta 1 - Copia.png">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <script src="https://kit.fontawesome.com/d1807a784c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Cemag - Produção</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img id="logo" src="static\CEMAGL (1) - Copia.png" alt="logo cemag">
+        </div>
+        <div class="entradas">
+            <input type="text" name="calibracao" id="calibracao" value="Calibração" disabled>
+            <select name="tipo__app" id="tipo__app">
+                <option value="" selected disabled hidden></option>  
+                <option value="Home">Home</option>  
+                <option value="Cadastro" >Cadastro</option>  
+                <option value="Pintura" >Pintura</option>  
+            </select>
+            <a href="/login" class="botao-voltar">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+    
+    <script src="static/javascript/links.js"></script>
+    <script src="static/javascript/filter.js"></script>
+</body>
+</html>

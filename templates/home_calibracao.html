@@ -1,0 +1,529 @@
+{% extends "index.html" %}
+{% block body %}
+
+<main class="principal">
+    <div class="table">
+        <section class="table__header">
+            <h1>Calibração Plano-Mestre</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Filtrar...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </section>
+        <section class="table__body">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th class="cabecalho">Tag</th>
+                        <th class="cabecalho">Equip</th>
+                        <th class="cabecalho">Setor</th>
+                        <th class="cabecalho">Ult.Calib</th>
+                        <th class="cabecalho">Periodicidade</th>
+                        <th class="cabecalho">Status</th>
+                        <th class="cabecalho">Prox.Calib</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-001</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger"> 
+                        <td data-label="Tag">MEC-CQ-002</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-003</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-004</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-005</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-006</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-007</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-008</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-009</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-010</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-011</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-012</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr class="modal-trigger">
+                        <td data-label="Tag">MEC-CQ-013</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Periodicidade">12</td>
+                        <td data-label="Status">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div class="table">
+        <section class="table__header">
+            <h1>Histórico de Calibração</h1>
+            <div class="input-group2">
+                <input type="search" placeholder="Filtrar..." disabled>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </section>
+        <div class="select-group">
+            <select name="ordemproducao" id="ordemproducao" multiple>
+                <option value="MEC-CQ-001">MEC-CQ-001</option>
+                <option value="MEC-CQ-002">MEC-CQ-002</option>
+                <option value="MEC-CQ-003">MEC-CQ-003</option>
+                <option value="MEC-CQ-004">MEC-CQ-004</option>
+                <option value="MEC-CQ-005">MEC-CQ-005</option>
+                <option value="MEC-CQ-006">MEC-CQ-006</option>
+                <option value="MEC-CQ-007">MEC-CQ-007</option>
+                <option value="MEC-CQ-008">MEC-CQ-008</option>
+                <option value="MEC-CQ-009">MEC-CQ-009</option>
+                <option value="MEC-CQ-010">MEC-CQ-010</option>
+            </select>
+            <button id="filtrarOrdem" type="submit" class="btn btn-light" style=" margin-left: 10px;">Filtrar</button>
+        </div>
+        <section class="table__body">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th class="cabecalho">Tag</th>
+                        <th class="cabecalho">Equip</th>
+                        <th class="cabecalho">Setor</th>
+                        <th class="cabecalho">Ult.Calib</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-001</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-002</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-003</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-004</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-005</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-006</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-007</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-008</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-009</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-010</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-010</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-010</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-010</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Ult.Calib">21/06/2023</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <!-- <div class="table">
+        <section class="table__header">
+            <h1>Consulta</h1>
+            <div class="input-group3">
+                <input type="search" placeholder="Filtrar...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </section>
+        <section class="table__body">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th class="cabecalho">Tag</th>
+                        <th class="cabecalho">Equip</th>
+                        <th class="cabecalho">Setor</th>
+                        <th class="cabecalho">Status</th>
+                        <th class="cabecalho">Ult.Calib</th>
+                        <th class="cabecalho">Periodicidade</th>
+                        <th class="cabecalho">Prox.Calib</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-001</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-002</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-003</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-004</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <div class="table">
+        <section class="table__header">
+            <h1>Estoque de Chapas</h1>
+            <div class="input-group4">
+                <input type="search" placeholder="Filtrar...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </section>
+        <section class="table__body">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th class="cabecalho">Tag</th>
+                        <th class="cabecalho">Equip</th>
+                        <th class="cabecalho">Setor</th>
+                        <th class="cabecalho">Status</th>
+                        <th class="cabecalho">Ult.Calib</th>
+                        <th class="cabecalho">Periodicidade</th>
+                        <th class="cabecalho">Prox.Calib</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-001</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-002</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-003</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Tag">MEC-CQ-004</td>
+                        <td data-label="Equip">Relógio Comparador</td>
+                        <td data-label="Setor">Controle de Qualidade</td>
+                        <td data-label="Status">21/06/2023</td>
+                        <td data-label="Ult.Calib">12</td>
+                        <td data-label="Periodicidade">Calibrado</td>
+                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+        <div class="table">
+            <section class="table__header">
+                <h1>Visão Geral das Cargas</h1>
+                <div class="input-group5">
+                    <input type="search" placeholder="Filtrar...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </section>
+            <section class="table__body">
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th class="cabecalho">Tag</th>
+                            <th class="cabecalho">Equip</th>
+                            <th class="cabecalho">Setor</th>
+                            <th class="cabecalho">Status</th>
+                            <th class="cabecalho">Ult.Calib</th>
+                            <th class="cabecalho">Periodicidade</th>
+                            <th class="cabecalho">Prox.Calib</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Tag">MEC-CQ-001</td>
+                            <td data-label="Equip">Relógio Comparador</td>
+                            <td data-label="Setor">Controle de Qualidade</td>
+                            <td data-label="Status">21/06/2023</td>
+                            <td data-label="Ult.Calib">12</td>
+                            <td data-label="Periodicidade">Calibrado</td>
+                            <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Tag">MEC-CQ-002</td>
+                            <td data-label="Equip">Relógio Comparador</td>
+                            <td data-label="Setor">Controle de Qualidade</td>
+                            <td data-label="Status">21/06/2023</td>
+                            <td data-label="Ult.Calib">12</td>
+                            <td data-label="Periodicidade">Calibrado</td>
+                            <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div> -->
+        <div class="modal fade" id="modalGanhar" tabindex="-1" role="dialog"
+            aria-labelledby="funcionarioModalLabel" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h2 class="modal-title" id="funcionarioModalLabel"></h2>
+                     <button type="button" class="close" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div>
+                        <button id="ganhar">Confirmar</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+</main>
+<div id="loading-overlay" style="display: none;">
+    <div id="loading-spinner"></div>
+ </div>
+<script>
+    new MultiSelectTag('ordemproducao', {
+        rounded: true,    // default true
+        shadow: true,      // default false
+        placeholder: 'Pesquisar...',  // default Search...
+        onChange: function(values) {
+            console.log(values)
+        }
+})
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const filtrarButton = document.getElementById("filtrarOrdem");
+        filtrarButton.addEventListener("click", function() {
+            const select = document.getElementById("ordemproducao");
+            const selectedValues = Array.from(select.selectedOptions).map(option => option.value);
+
+            // Seleciona a tabela com o título "Ordem de Produção"
+            const tabelaOrdemProducao = document.querySelector(".table:nth-of-type(2)"); // A segunda tabela
+
+            // Seleciona apenas as linhas da tabela "Ordem de Produção"
+            const tableRows = tabelaOrdemProducao.querySelectorAll(".table__body tbody tr");
+            tableRows.forEach(row => {
+                const codigo = row.querySelector("td:first-child").textContent;
+                if (selectedValues.length === 0 || selectedValues.includes(codigo)) {
+                    row.style.display = "table-row";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+<script>
+   function showModalGanhar(event) {
+    // Acesse o conteúdo do primeiro <td> (índice 0) no <tr> clicado
+    const tag = event.currentTarget.querySelector('td').textContent;
+
+    // Use a variável 'tag' conforme necessário
+    console.log('Nome da Tag:', tag);
+
+    // Resto do seu código aqui
+    $.ajax({
+        success: function () {
+            // Defina o texto do título do modal com base na 'tag'
+            $('.modal-title').text(tag);
+
+            // Exiba o modal
+            $('#modalGanhar').modal('show');
+
+            setTimeout(function() {
+                modal.style.display = 'block';
+            }, 1000);
+            // Fechar o modal ao clicar no botão de fechar
+            $('#modalGanhar').on('click', '.close', function () {
+                $('#modalGanhar').modal('hide');
+            });
+        },
+        error: function (error) {
+            alert('Essa Ordem de Serviço não contém imagem ou vídeo');
+            console.log(error);
+        }
+    });
+}
+
+// Obtém todos os elementos 'tr' na tabela
+const trElements = document.querySelectorAll('tr');
+
+// Adiciona um ouvinte de eventos de clique a cada 'tr'
+trElements.forEach(function(tr) {
+    tr.addEventListener('click', showModalGanhar);
+});
+ </script>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='entrar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert-success alert-dismissible fade show" id="alerta_login" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="logreg-box">
+            <div class="form-box login">
+                <div class="form-content">
+                <form method="post">
+                    <div class="logo_login">
+                        <img id="logo_login" src="static\CEMAGL (1) - Copia.png" alt="logo cemag">
+                    </div>
+                    <input type="text" name="calibracao" id="calibracao" value="Calibração" disabled>
+                    <h2 style="margin-top: 30px;">Login</h2>
+                    <div class="input-box center">
+                        <span class="icon"><ion-icon style="color: white;"></ion-icon></span>
+                        <input type="text" id="username" name="username" required><br><br>
+                        <label class="opacity-100" for="username">Nome:</label>
+                    </div>
+                    <div class="input-box center">
+                        <span class="icon"><ion-icon name="lock-closed" style="color: white;"></ion-icon></span>
+                        <input type="password" id="password" name="password" required><br><br>
+                        <label class="opacity-100" for="password">Senha:</label>
+                    </div>
+
+                    <button id="changeRouteBtn" type="submit" class="btn btn-light" style="text-align: center;">Login</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
