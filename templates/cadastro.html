@@ -1,4 +1,208 @@
 {% extends "index.html" %}
 {% block body %}
 
+<main class="principal">
+    <div class="table" style="margin: 40px; margin-left: 20px;">
+        <section class="table__header">
+            <h1>Cadastro de Equipamentos</h1>
+        </section>
+        <section class="card__body">
+                <div class="form-row">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_nome">Equipamento</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                  </div>
+          
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_matricula">Fabricante</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="editar_matricula" id="editar_matricula">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_salario">Grandeza</label>
+                    <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                  </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                  <label for="editar_funcao">Unidade</label>
+                  <select class="form-control" style="height: 38px;">
+                    <option value="" selected disabled hidden></option>  
+                    <option>Administrativo</option>
+                    <option>Corte e estamparia</option>
+                    <option>Solda</option>
+                    <option>Montagem</option>
+                    <option>Pintura</option>
+                    <option>Carpintaria</option>
+                    <option>Almoxarifado</option>
+                    <option>Usinagem</option>
+                    <option>Manutenção</option>
+                    <option>Serra</option>
+                    <option>Corte</option>
+                    <option>Serralheria</option>
+                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                  </select>
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-top: 20px;">
+                      <label for="editar_nome">Faixa Nominal</label>
+                      <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                    </div>
+            
+                    <div class="form-group" style="margin-top: 20px;">
+                      <label for="editar_matricula">Faixa de Calibração</label>
+                      <input type="text" class="form-control" style="height: 38px;" name="editar_matricula" id="editar_matricula">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group" style="margin-top: 20px;">
+                      <label for="editar_salario">Preço(R$)</label>
+                      <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    </div>
+                  </div>
+                <div>
+                    <button id="cadastrar">Cadastrar Equipamento</button>
+                 </div>
+        </section>
+    </div>
+    <div class="table" style="margin: 40px; margin-left: 20px;">
+        <section class="table__header">
+            <h1>Cadastro de Tag's</h1>
+        </section>
+        <section class="card__body">
+            <div class="form-row">
+                <div class="form-group" style="margin-top: 20px;">
+                  <label for="editar_nome">Tag</label>
+                  <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                </div>
+        
+                <div class="form-group" style="margin-top: 20px;">
+                  <label for="editar_matricula">Equipamento</label>
+                  <select class="form-control" style="height: 38px;">
+                    <option value="" selected disabled hidden></option>  
+                    <option>Administrativo</option>
+                    <option>Corte e estamparia</option>
+                    <option>Solda</option>
+                    <option>Montagem</option>
+                    <option>Pintura</option>
+                    <option>Carpintaria</option>
+                    <option>Almoxarifado</option>
+                    <option>Usinagem</option>
+                    <option>Manutenção</option>
+                    <option>Serra</option>
+                    <option>Corte</option>
+                    <option>Serralheria</option>
+                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group" style="margin-top: 20px;">
+                  <label for="editar_salario">Faixa Norminal</label>
+                  <select class="form-control" style="height: 38px;">
+                    <option value="" selected disabled hidden></option>  
+                    <option>Administrativo</option>
+                    <option>Corte e estamparia</option>
+                    <option>Solda</option>
+                    <option>Montagem</option>
+                    <option>Pintura</option>
+                    <option>Carpintaria</option>
+                    <option>Almoxarifado</option>
+                    <option>Usinagem</option>
+                    <option>Manutenção</option>
+                    <option>Serra</option>
+                    <option>Corte</option>
+                    <option>Serralheria</option>
+                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                  </select>
+                </div>
+              
+              <div class="form-group" style="margin-top: 20px;">
+                <label for="editar_funcao">Unidade</label>
+                <select class="form-control" style="height: 38px;">
+                    <option value="" selected disabled hidden></option>  
+                    <option>Administrativo</option>
+                    <option>Corte e estamparia</option>
+                    <option>Solda</option>
+                    <option>Montagem</option>
+                    <option>Pintura</option>
+                    <option>Carpintaria</option>
+                    <option>Almoxarifado</option>
+                    <option>Usinagem</option>
+                    <option>Manutenção</option>
+                    <option>Serra</option>
+                    <option>Corte</option>
+                    <option>Serralheria</option>
+                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                  </select>
+              </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_nome">Localização</label>
+                    <select class="form-control" style="height: 38px;">
+                        <option value="" selected disabled hidden></option>  
+                        <option>Administrativo</option>
+                        <option>Corte e estamparia</option>
+                        <option>Solda</option>
+                        <option>Montagem</option>
+                        <option>Pintura</option>
+                        <option>Carpintaria</option>
+                        <option>Almoxarifado</option>
+                        <option>Usinagem</option>
+                        <option>Manutenção</option>
+                        <option>Serra</option>
+                        <option>Corte</option>
+                        <option>Serralheria</option>
+                        <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                      </select>
+                  </div>
+          
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_matricula">Responsável</label>
+                    <select class="form-control" style="height: 38px;">
+                        <option value="" selected disabled hidden></option>  
+                        <option>Administrativo</option>
+                        <option>Corte e estamparia</option>
+                        <option>Solda</option>
+                        <option>Montagem</option>
+                        <option>Pintura</option>
+                        <option>Carpintaria</option>
+                        <option>Almoxarifado</option>
+                        <option>Usinagem</option>
+                        <option>Manutenção</option>
+                        <option>Serra</option>
+                        <option>Corte</option>
+                        <option>Serralheria</option>
+                        <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_salario">Tipo de Controle</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                  </div>
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_salario">Data da Calibração</label>
+                    <input type="date" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_salario">Periodicidade</label>
+                    <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                  </div>
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="editar_salario">Método</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                  </div>
+                </div>
+              <div>
+                  <button id="cadastrar">Cadastrar Tag</button>
+               </div>
+        </section>
+    </div>
+
 {% endblock %}

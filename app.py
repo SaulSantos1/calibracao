@@ -18,14 +18,14 @@ def inicio():
     return render_template("home_calibracao.html")
 
 @app.route('/cadastro')
-def solda(): 
+def cadastro(): 
     
     return render_template("cadastro.html")
 
-@app.route('/pintura')
-def pintura(): 
+@app.route('/relacao')
+def relacao(): 
     
-    return render_template("pintura.html")
+    return render_template("relacao.html")
 
 
 if __name__ == '__main__':

@@ -16,9 +16,9 @@ select.addEventListener("change", function () {
             // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/cadastro";
             break;
-        case "Pintura":
+        case "Relação":
             // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
-            window.location.href = "/pintura";
+            window.location.href = "/relacao";
             break;
         default:
             // Redirecione para uma página padrão, se necessário
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "/cadastro":
             selectElement.value = "Cadastro";
             break;
-        case "/pintura":
-            selectElement.value = "Pintura";
+        case "/relacao":
+            selectElement.value = "Relação";
             break;
         default:
             // Se a URL não corresponder a nenhuma das opções, você pode deixar a seleção padrão (vazio)
