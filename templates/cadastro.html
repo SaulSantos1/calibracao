@@ -9,24 +9,24 @@
         <section class="card__body">
                 <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_nome">Equipamento</label>
-                    <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                    <label for="equipamento">Equipamento</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="equipamento" id="equipamento">
                   </div>
           
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_matricula">Fabricante</label>
-                    <input type="text" class="form-control" style="height: 38px;" name="editar_matricula" id="editar_matricula">
+                    <label for="fabricante">Fabricante</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="fabricante" id="fabricante">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_salario">Grandeza</label>
-                    <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    <label for="grandeza">Grandeza</label>
+                    <input type="number" class="form-control" style="height: 38px;" name="grandeza" id="grandeza">
                   </div>
                 
                 <div class="form-group" style="margin-top: 20px;">
-                  <label for="editar_funcao">Unidade</label>
-                  <select class="form-control" style="height: 38px;">
+                  <label for="unidade">Unidade</label>
+                  <select class="form-control" style="height: 38px;" name="unidade" id="unidade">
                     <option value="" selected disabled hidden></option>  
                     <option>Administrativo</option>
                     <option>Corte e estamparia</option>
@@ -46,23 +46,23 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group" style="margin-top: 20px;">
-                      <label for="editar_nome">Faixa Nominal</label>
-                      <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                      <label for="nominal">Faixa Nominal</label>
+                      <input type="text" class="form-control" style="height: 38px;" name="nominal" id="nominal">
                     </div>
             
                     <div class="form-group" style="margin-top: 20px;">
-                      <label for="editar_matricula">Faixa de Calibração</label>
-                      <input type="text" class="form-control" style="height: 38px;" name="editar_matricula" id="editar_matricula">
+                      <label for="faixa_calibracao">Faixa de Calibração</label>
+                      <input type="text" class="form-control" style="height: 38px;" name="faixa_calibracao" id="faixa_calibracao">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group" style="margin-top: 20px;">
-                      <label for="editar_salario">Preço(R$)</label>
-                      <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                      <label for="preco">Preço(R$)</label>
+                      <input type="number" class="form-control" style="height: 38px;" name="preco" id="preco">
                     </div>
                   </div>
                 <div>
-                    <button id="cadastrar">Cadastrar Equipamento</button>
+                    <button id="cadastrar" onclick="postEquipamento()">Cadastrar Equipamento</button>
                  </div>
         </section>
     </div>
@@ -73,13 +73,13 @@
         <section class="card__body">
             <div class="form-row">
                 <div class="form-group" style="margin-top: 20px;">
-                  <label for="editar_nome">Tag</label>
-                  <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                  <label for="tag">Tag</label>
+                  <input type="text" class="form-control" style="height: 38px;" name="tag" id="tag">
                 </div>
         
                 <div class="form-group" style="margin-top: 20px;">
-                  <label for="editar_matricula">Equipamento</label>
-                  <select class="form-control" style="height: 38px;">
+                  <label for="tag_equipamento">Equipamento</label>
+                  <select class="form-control" style="height: 38px;" name="tag_equipamento" id="tag_equipamento">
                     <option value="" selected disabled hidden></option>  
                     <option>Administrativo</option>
                     <option>Corte e estamparia</option>
@@ -93,14 +93,14 @@
                     <option>Serra</option>
                     <option>Corte</option>
                     <option>Serralheria</option>
-                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
+                    <option>Equipamentos de Movimentação</option>
                   </select>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group" style="margin-top: 20px;">
-                  <label for="editar_salario">Faixa Norminal</label>
-                  <select class="form-control" style="height: 38px;">
+                  <label for="tag_nominal">Faixa Norminal</label>
+                  <select class="form-control" style="height: 38px;" name="tag_nominal" id="tag_nominal">
                     <option value="" selected disabled hidden></option>  
                     <option>Administrativo</option>
                     <option>Corte e estamparia</option>
@@ -119,8 +119,8 @@
                 </div>
               
               <div class="form-group" style="margin-top: 20px;">
-                <label for="editar_funcao">Unidade</label>
-                <select class="form-control" style="height: 38px;">
+                <label for="tag_unidade">Unidade</label>
+                <select class="form-control" style="height: 38px;" name="tag_unidade" id="tag_unidade">
                     <option value="" selected disabled hidden></option>  
                     <option>Administrativo</option>
                     <option>Corte e estamparia</option>
@@ -140,8 +140,8 @@
               </div>
               <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_nome">Localização</label>
-                    <select class="form-control" style="height: 38px;">
+                    <label for="tag_localizacao">Localização</label>
+                    <select class="form-control" style="height: 38px;" name="tag_localizacao" id="tag_localizacao">
                         <option value="" selected disabled hidden></option>  
                         <option>Administrativo</option>
                         <option>Corte e estamparia</option>
@@ -160,8 +160,8 @@
                   </div>
           
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_matricula">Responsável</label>
-                    <select class="form-control" style="height: 38px;">
+                    <label for="tag_responsavel">Responsável</label>
+                    <select class="form-control" style="height: 38px;" name="tag_responsavel" id="tag_responsavel">
                         <option value="" selected disabled hidden></option>  
                         <option>Administrativo</option>
                         <option>Corte e estamparia</option>
@@ -181,28 +181,140 @@
                 </div>
                 <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_salario">Tipo de Controle</label>
-                    <input type="text" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    <label for="tag_controle">Tipo de Controle</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="tag_controle" id="tag_controle">
                   </div>
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_salario">Data da Calibração</label>
-                    <input type="date" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    <label for="tag_data">Data da Calibração</label>
+                    <input type="date" class="form-control" style="height: 38px;" name="tag_data" id="tag_data">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_salario">Periodicidade</label>
-                    <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    <label for="tag_periodicidade">Periodicidade</label>
+                    <input type="number" class="form-control" style="height: 38px;" name="tag_periodicidade" id="tag_periodicidade">
                   </div>
                   <div class="form-group" style="margin-top: 20px;">
-                    <label for="editar_salario">Método</label>
-                    <input type="text" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                    <label for="tag_metodo">Método</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="tag_metodo" id="tag_metodo">
                   </div>
                 </div>
               <div>
-                  <button id="cadastrar">Cadastrar Tag</button>
+                  <button id="cadastrar" onclick="postTag()">Cadastrar Tag</button>
                </div>
         </section>
     </div>
+
+    <div id="loading-overlay" style="display: none;">
+      <div id="loading-spinner"></div>
+    </div>
+    
+    <div id="overlay" style="display: none;">
+      <div id="loading-bar-container">
+        <div id="loading-bar">
+          <div id="loading-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function postEquipamento() {
+        $("#loading-overlay").show();
+        var equipamento = $('#equipamento').val();
+        var fabricante = $('#fabricante').val();
+        var grandeza = $('#grandeza').val();
+        var unidade = $('#unidade').val();
+        var nominal = $('#nominal').val();
+        var faixa_calibracao = $('#faixa_calibracao').val();
+        var preco = $('#preco').val();
+        
+        $.ajax({
+            url: '/cadastro',
+            method: 'POST',
+            data: {
+              equipamento: equipamento,
+              fabricante: fabricante,
+              grandeza: grandeza,
+              unidade: unidade,
+              nominal:nominal,
+              faixa_calibracao:faixa_calibracao,
+              preco:preco,
+              // inclua outros dropdowns aqui
+            },
+            success: function(response) {
+              // atualizar o DataFrame com os dados retornados
+              var equipamento = response.equipamento;
+              var fabricante = response.fabricante;
+              var grandeza = response.grandeza;
+              var unidade = response.unidade;
+              var nominal = response.nominal;
+              var faixa_calibracao = response.faixa_calibracao;
+              var preco = response.preco;
+
+              window.location.reload();
+              // faça o processamento necessário para atualizar o DataFrame na página
+
+              $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+            },
+            error: function(error) {
+              console.log(error);
+              $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+            }
+          });
+    }
+    function postTag() {
+        $("#loading-overlay").show();
+        var tag = $('#tag').val();
+        var tag_equipamento = $('#tag_equipamento').val();
+        var tag_nominal = $('#tag_nominal').val();
+        var tag_unidade = $('#tag_unidade').val();
+        var tag_localizacao = $('#tag_localizacao').val();
+        var tag_responsavel = $('#tag_responsavel').val();
+        var tag_controle = $('#tag_controle').val();
+        var tag_data = $('#tag_data').val();
+        var tag_periodicidade = $('#tag_periodicidade').val();
+        var tag_metodo = $('#tag_metodo').val();
+        
+        $.ajax({
+            url: '/equipamento',
+            method: 'POST',
+            data: {
+              tag: tag,
+              tag_equipamento: tag_equipamento,
+              tag_nominal: tag_nominal,
+              tag_unidade: tag_unidade,
+              tag_localizacao:tag_localizacao,
+              tag_responsavel:tag_responsavel,
+              tag_controle:tag_controle,
+              tag_data:tag_data,
+              tag_periodicidade:tag_periodicidade,
+              tag_metodo:tag_metodo,
+              // inclua outros dropdowns aqui
+            },
+            success: function(response) {
+              // atualizar o DataFrame com os dados retornados
+              var tag = response.tag;
+              var tag_equipamento = response.tag_equipamento;
+              var tag_nominal = response.tag_nominal;
+              var tag_unidade = response.tag_unidade;
+              var tag_localizacao = response.tag_localizacao;
+              var tag_responsavel = response.tag_responsavel;
+              var tag_controle = response.tag_controle;
+              var tag_data = response.tag_data;
+              var tag_periodicidade = response.tag_periodicidade;
+              var tag_metodo = response.tag_metodo;
+
+              window.location.reload();
+              // faça o processamento necessário para atualizar o DataFrame na página
+
+              $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+            },
+            error: function(error) {
+              console.log(error);
+              $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+            }
+          });
+    }
+    </script>
 
 {% endblock %}
