@@ -2,6 +2,7 @@ from flask import Flask,render_template, redirect, url_for, request, session, fl
 import psycopg2  # pip install psycopg2
 import psycopg2.extras
 from functools import wraps
+import pandas as pd
 import requests
 
 app = Flask(__name__)
@@ -59,23 +60,50 @@ def inicio():
 @login_required
 def cadastro(): 
 
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
     if request.method == 'POST':
 
-        equip = request.form['equipamento']
-        fabric = request.form['fabricante']
-        grandeza = request.form['grandeza']
-        unidade = request.form['unidade']
-        faixa_nominal = request.form['nominal']
-        faixa_calibracao = request.form['faixa_calibracao']
-        preco = request.form['preco']
+        equip = request.form['tag_equipamento']
+        # fabric = request.form['fabricante']
+        # grandeza = request.form['grandeza']
+        # unidade = request.form['unidade']
+        # faixa_nominal = request.form['nominal']
+        # faixa_calibracao = request.form['faixa_calibracao']
+        # preco = request.form['preco']
 
-        print(equip,fabric,grandeza,unidade,faixa_nominal,faixa_calibracao,preco)
+        query = (f"""   SELECT DISTINCT (unidade,faixa_nominal)
+                        FROM calibracao.tb_get_equipamentos
+                        WHERE equipamento = '{equip}';""")
 
-    return render_template("cadastro.html")
+        cur.execute(query)
+        data = cur.fetchall()
+        df_data = pd.DataFrame(data)
+        unidades_no_equipamento = df_data[0].values.tolist()
+        print(unidades_no_equipamento)
 
-@app.route('/equipamento', methods=['GET','POST'])
+        return render_template("cadastro.html",unidades_no_equipamento=unidades_no_equipamento)
+
+    s = ("""SELECT DISTINCT(equipamento) 
+            FROM calibracao.tb_get_equipamentos
+            ORDER BY equipamento;""")
+
+    cur.execute(s)
+    data = cur.fetchall()
+    df_data = pd.DataFrame(data)
+    equipamentos = df_data[0].values.tolist()
+    unidade = [item.split(",")[0].strip('()') for item in equipamentos]
+    faixa_nominal = [item.split(",")[1].strip('()') for item in equipamentos]
+
+    return render_template("cadastro.html",equipamentos=equipamentos)
+
+@app.route('/cadastro_tag', methods=['GET','POST'])
 @login_required
-def equipamento(): 
+def cadastro_tag(): 
+
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     if request.method == 'POST':
 
@@ -90,8 +118,6 @@ def equipamento():
         tag_periodicidade = request.form['tag_periodicidade']
         tag_metodo = request.form['tag_metodo']
 
-        print(tag,tag_equipamento,tag_nominal,tag_unidade,tag_localizacao,tag_responsavel,tag_controle,tag_data,tag_periodicidade,tag_metodo)
-
     return render_template("cadastro.html")
 
 @app.route('/relacao')
@@ -99,6 +125,36 @@ def equipamento():
 def relacao(): 
     
     return render_template("relacao.html")
+
+@app.route('/sigla', methods=['GET','POST'])
+@login_required
+def sigla():
+
+    return render_template("sigla.html")
+
+def tabela_inicial():
+
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    df = pd.read_excel(r'C:\Users\TI\teste\Calibração\Controle Plano Mestre de Calibração.xlsx')
+
+    df.columns.values[4] = 'Faixa de calibração'
+
+    df = df.iloc[:, :-1]
+
+    df = df.fillna('')
+
+    for i in range(len(df)):
+
+        sql = """ INSERT INTO calibracao.tb_get_equipamentos (equipamento, faixa_nominal, unidade, grandeza, faixa_calibracao, fabricante) VALUES (%s,%s,%s,%s,%s,%s) """
+        
+        values = (df['Equipamento'][i], df['Faixa nominal'][i], df['Un'][i], df['Grandeza'][i], df['Faixa de calibração'][i], df['Fabricante'][i])
+        
+        cur.execute(sql, values)   
+
+    conn.commit()
+    conn.close()
 
 
 if __name__ == '__main__':

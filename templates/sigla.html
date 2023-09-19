@@ -1,0 +1,80 @@
+{% extends "index.html" %}
+{% block body %}
+
+<main class="principal" style="margin-top: 200px;">
+    <div class="table" style="margin: 40px; margin-left: 20px; height: 50vh;">
+        <section class="table__header">
+            <h1>Cadastro de Tag's Equipamento</h1>
+        </section>
+        <section class="card__body">
+            <div class="form-group" style="margin-top: 20px;">
+            <label for="equipamento">Equipamento</label>
+            <input type="text" class="form-control" style="height: 38px;" name="equipamento" id="equipamento_cadastrado">
+            </div>
+    
+            <div class="form-group" style="margin-top: 20px;">
+            <label for="equipamento">Tag Equipamento</label>
+            <input type="text" class="form-control" style="height: 38px;" name="equipamento" id="equipamento_tag">
+            </div>
+            <div class="imagem" style="display: flex; justify-content: center; align-items: center; margin-top: 30px ;">
+            <label>Exemplo: Máquina de Solda</label>
+            <img src="static\equip.png" alt="Equipamento Cadastro" style="border: solid 2px #6fadd0; border-radius: 10px; margin-left: 10px;">
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <button id="cadastrar" onclick="">Cadastrar Tag Equipamento</button>
+            </div>
+        </section>
+    </div>
+    <div class="table" style="margin: 40px; margin-left: 20px; height: 50vh;">
+        <section class="table__header">
+            <h1>Cadastro de Tag's Setor</h1>
+        </section>
+        <section class="card__body">
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="equipamento">Setor</label>
+                    <select class="form-control" style="height: 38px;" name="equipamento_cadastrado" id="equipamento_cadastrado">
+                        <option value="" selected disabled hidden></option>  
+                        <option>Administrativo</option>
+                        <option>Corte e estamparia</option>
+                        <option>Solda</option>
+                        <option>Montagem</option>
+                        <option>Pintura</option>
+                        <option>Carpintaria</option>
+                        <option>Almoxarifado</option>
+                        <option>Usinagem</option>
+                        <option>Manutenção</option>
+                        <option>Serra</option>
+                        <option>Corte</option>
+                        <option>Serralheria</option>
+                        <option>Equipamentos de Movimentação</option>
+                      </select>
+                  </div>
+          
+                  <div class="form-group" style="margin-top: 20px;">
+                    <label for="equipamento">Tag Setor</label>
+                    <input type="text" class="form-control" style="height: 38px;" name="equipamento_tag" id="equipamento_tag">
+                  </div>
+                 <div class="imagem" style="display: flex; justify-content: center; align-items: center; margin-top: 30px ;">
+                    <label>Exemplo: Pintura</label>
+                    <img src="static\setor.png" alt="Setor Cadastro" style="border: solid 2px #6fadd0; border-radius: 10px; margin-left: 10px;">
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button id="cadastrar" onclick="">Cadastrar Tag Setor</button>
+                 </div>
+        </section>
+    </div>
+
+    <div id="loading-overlay" style="display: none;">
+      <div id="loading-spinner"></div>
+    </div>
+    
+    <div id="overlay" style="display: none;">
+      <div id="loading-bar-container">
+        <div id="loading-bar">
+          <div id="loading-progress"></div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

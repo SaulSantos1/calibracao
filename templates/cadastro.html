@@ -21,7 +21,11 @@
                 <div class="form-row">
                   <div class="form-group" style="margin-top: 20px;">
                     <label for="grandeza">Grandeza</label>
-                    <input type="number" class="form-control" style="height: 38px;" name="grandeza" id="grandeza">
+                    <select class="form-control" style="height: 38px;" name="grandeza" id="grandeza">
+                      <option value="" selected disabled hidden></option>  
+                      <option>Dimensional</option>
+                      <option>Pressão</option>
+                    </select>
                   </div>
                 
                 <div class="form-group" style="margin-top: 20px;">
@@ -47,12 +51,20 @@
                 <div class="form-row">
                     <div class="form-group" style="margin-top: 20px;">
                       <label for="nominal">Faixa Nominal</label>
-                      <input type="text" class="form-control" style="height: 38px;" name="nominal" id="nominal">
+                      <select class="form-control" style="height: 38px;" name="nominal" id="nominal">
+                        <option value="" selected disabled hidden></option>  
+                        <option>Equip 1</option>
+                        <option>Equip 2</option>
+                      </select>
                     </div>
             
                     <div class="form-group" style="margin-top: 20px;">
                       <label for="faixa_calibracao">Faixa de Calibração</label>
-                      <input type="text" class="form-control" style="height: 38px;" name="faixa_calibracao" id="faixa_calibracao">
+                      <select class="form-control" style="height: 38px;" name="faixa_calibracao" id="faixa_calibracao">
+                        <option value="" selected disabled hidden></option>  
+                        <option>Equip 1</option>
+                        <option>Equip 2</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-row">
@@ -61,9 +73,7 @@
                       <input type="number" class="form-control" style="height: 38px;" name="preco" id="preco">
                     </div>
                   </div>
-                <div>
-                    <button id="cadastrar" onclick="postEquipamento()">Cadastrar Equipamento</button>
-                 </div>
+                  <button id="cadastrar" onclick="postEquipamento()">Cadastrar Equipamento</button>
         </section>
     </div>
     <div class="table" style="margin: 40px; margin-left: 20px;">
@@ -79,21 +89,11 @@
         
                 <div class="form-group" style="margin-top: 20px;">
                   <label for="tag_equipamento">Equipamento</label>
-                  <select class="form-control" style="height: 38px;" name="tag_equipamento" id="tag_equipamento">
+                  <select class="form-control" style="height: 38px;" name="tag_equipamento" id="tag_equipamento" onchange="postTag()">
                     <option value="" selected disabled hidden></option>  
-                    <option>Administrativo</option>
-                    <option>Corte e estamparia</option>
-                    <option>Solda</option>
-                    <option>Montagem</option>
-                    <option>Pintura</option>
-                    <option>Carpintaria</option>
-                    <option>Almoxarifado</option>
-                    <option>Usinagem</option>
-                    <option>Manutenção</option>
-                    <option>Serra</option>
-                    <option>Corte</option>
-                    <option>Serralheria</option>
-                    <option>Equipamentos de Movimentação</option>
+                    {% for equipamento in equipamentos %}
+                    <option value="{{equipamento}}">{{equipamento}}</option>
+                    {% endfor %}
                   </select>
                 </div>
               </div>
@@ -101,41 +101,13 @@
                 <div class="form-group" style="margin-top: 20px;">
                   <label for="tag_nominal">Faixa Norminal</label>
                   <select class="form-control" style="height: 38px;" name="tag_nominal" id="tag_nominal">
-                    <option value="" selected disabled hidden></option>  
-                    <option>Administrativo</option>
-                    <option>Corte e estamparia</option>
-                    <option>Solda</option>
-                    <option>Montagem</option>
-                    <option>Pintura</option>
-                    <option>Carpintaria</option>
-                    <option>Almoxarifado</option>
-                    <option>Usinagem</option>
-                    <option>Manutenção</option>
-                    <option>Serra</option>
-                    <option>Corte</option>
-                    <option>Serralheria</option>
-                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
                   </select>
                 </div>
               
               <div class="form-group" style="margin-top: 20px;">
                 <label for="tag_unidade">Unidade</label>
                 <select class="form-control" style="height: 38px;" name="tag_unidade" id="tag_unidade">
-                    <option value="" selected disabled hidden></option>  
-                    <option>Administrativo</option>
-                    <option>Corte e estamparia</option>
-                    <option>Solda</option>
-                    <option>Montagem</option>
-                    <option>Pintura</option>
-                    <option>Carpintaria</option>
-                    <option>Almoxarifado</option>
-                    <option>Usinagem</option>
-                    <option>Manutenção</option>
-                    <option>Serra</option>
-                    <option>Corte</option>
-                    <option>Serralheria</option>
-                    <option value="Equipamentos de Movimentação">Equipamentos de Movimentação</option>
-                  </select>
+                </select>
               </div>
               </div>
               <div class="form-row">
@@ -229,7 +201,7 @@
         var preco = $('#preco').val();
         
         $.ajax({
-            url: '/cadastro',
+            url: '/cadastro_equipamento',
             method: 'POST',
             data: {
               equipamento: equipamento,
@@ -268,27 +240,27 @@
         var tag_equipamento = $('#tag_equipamento').val();
         var tag_nominal = $('#tag_nominal').val();
         var tag_unidade = $('#tag_unidade').val();
-        var tag_localizacao = $('#tag_localizacao').val();
-        var tag_responsavel = $('#tag_responsavel').val();
-        var tag_controle = $('#tag_controle').val();
-        var tag_data = $('#tag_data').val();
-        var tag_periodicidade = $('#tag_periodicidade').val();
-        var tag_metodo = $('#tag_metodo').val();
+        // var tag_localizacao = $('#tag_localizacao').val();
+        // var tag_responsavel = $('#tag_responsavel').val();
+        // var tag_controle = $('#tag_controle').val();
+        // var tag_data = $('#tag_data').val();
+        // var tag_periodicidade = $('#tag_periodicidade').val();
+        // var tag_metodo = $('#tag_metodo').val();
         
         $.ajax({
-            url: '/equipamento',
+            url: '/cadastro',
             method: 'POST',
             data: {
               tag: tag,
               tag_equipamento: tag_equipamento,
               tag_nominal: tag_nominal,
               tag_unidade: tag_unidade,
-              tag_localizacao:tag_localizacao,
-              tag_responsavel:tag_responsavel,
-              tag_controle:tag_controle,
-              tag_data:tag_data,
-              tag_periodicidade:tag_periodicidade,
-              tag_metodo:tag_metodo,
+              // tag_localizacao:tag_localizacao,
+              // tag_responsavel:tag_responsavel,
+              // tag_controle:tag_controle,
+              // tag_data:tag_data,
+              // tag_periodicidade:tag_periodicidade,
+              // tag_metodo:tag_metodo,
               // inclua outros dropdowns aqui
             },
             success: function(response) {
@@ -297,16 +269,14 @@
               var tag_equipamento = response.tag_equipamento;
               var tag_nominal = response.tag_nominal;
               var tag_unidade = response.tag_unidade;
-              var tag_localizacao = response.tag_localizacao;
-              var tag_responsavel = response.tag_responsavel;
-              var tag_controle = response.tag_controle;
-              var tag_data = response.tag_data;
-              var tag_periodicidade = response.tag_periodicidade;
-              var tag_metodo = response.tag_metodo;
+              // var tag_localizacao = response.tag_localizacao;
+              // var tag_responsavel = response.tag_responsavel;
+              // var tag_controle = response.tag_controle;
+              // var tag_data = response.tag_data;
+              // var tag_periodicidade = response.tag_periodicidade;
+              // var tag_metodo = response.tag_metodo;
 
-              window.location.reload();
-              // faça o processamento necessário para atualizar o DataFrame na página
-
+              atualizarDropdowns(tag_nominal,tag_unidade)
               $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
             },
             error: function(error) {
@@ -315,6 +285,43 @@
             }
           });
     }
+
+    function atualizarDropdowns(faixa_nominal,unidade) {
+    $("#loading-overlay").show();
+    var nominalDropdown = $('#tag_nominal');
+    var unidadeDropdown = $('#tag_unidade');
+
+    // Armazenar os valores selecionados atualmente
+    var nominalSelecionada = nominalDropdown.val();
+    var unidadeSelecionado = unidadeDropdown.val();
+
+    nominalDropdown.empty();
+    unidadeDropdown.empty();
+
+    // Adicionar a opção "Todos" em todos os dropdowns
+    nominalDropdown.append($('<option>').text('Selecionar').attr('value', ''));
+    unidadeDropdown.append($('<option>').text('Selecionar').attr('value', ''));
+  
+    // Preencher os valores dos dropdowns e selecionar o valor atual, se existir
+    $.each(faixa_nominal, function (index, value) {
+      var option = $('<option>').text(value[0]).attr('value', value[0]);
+      if (value[0] === nominalSelecionada) {
+        option.attr('selected', 'selected');
+      }
+      nominalDropdown.append(option);
+    });
+
+    $.each(unidade, function (index, value) {
+      var option = $('<option>').text(value[0]).attr('value', value[0]);
+      if (value[0] === unidadeSelecionado) {
+        option.attr('selected', 'selected');
+      }
+      unidadeDropdown.append(option);
+    });
+
+    $("#loading-overlay").hide();
+    // Atualize os outros dropdowns conforme necessário
+  }
     </script>
 
 {% endblock %}

@@ -20,6 +20,10 @@ select.addEventListener("change", function () {
             // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/relacao";
             break;
+        case "Siglas de Tag":
+            // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
+            window.location.href = "/sigla";
+            break;
         default:
             // Redirecione para uma página padrão, se necessário
             window.location.href = "/login";
@@ -40,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
             break;
         case "/relacao":
             selectElement.value = "Relação";
+            break;
+        case "/sigla":
+            selectElement.value = "Siglas de Tag";
             break;
         default:
             // Se a URL não corresponder a nenhuma das opções, você pode deixar a seleção padrão (vazio)

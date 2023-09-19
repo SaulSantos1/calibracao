@@ -329,6 +329,7 @@ tbody tr:nth-child(even){
 tbody tr{
     --delay: .1s;
     transition: .5s ease-in-out var(--delay), background-color 0s;
+    cursor: pointer;
 }
 
 tbody tr.hide{
@@ -748,4 +749,8 @@ tbody tr.hide td i{
     font-weight: bold;
     font-size: 1em;
     color: #fff;
+}
+
+#cadastrar:hover{
+    background: #82c3e9;
 }
