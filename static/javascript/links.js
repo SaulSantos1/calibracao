@@ -9,19 +9,15 @@ select.addEventListener("change", function () {
     // Redirecione com base na opção selecionada
     switch (selectedValue) {
         case "Home":
-            // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/";
             break;
         case "Cadastro":
-            // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/cadastro";
             break;
         case "Relação":
-            // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/relacao";
             break;
         case "Siglas de Tag":
-            // Redirecione para a página desejada (por exemplo, /corte_estamparia.html)
             window.location.href = "/sigla";
             break;
         default:
