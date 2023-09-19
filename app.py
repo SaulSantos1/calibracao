@@ -93,9 +93,7 @@ def cadastro():
     data = cur.fetchall()
     df_data = pd.DataFrame(data)
     equipamentos = df_data[0].values.tolist()
-    unidade = [item.split(",")[0].strip('()') for item in equipamentos]
-    faixa_nominal = [item.split(",")[1].strip('()') for item in equipamentos]
-
+    
     return render_template("cadastro.html",equipamentos=equipamentos)
 
 @app.route('/cadastro_tag', methods=['GET','POST'])
