@@ -736,7 +736,7 @@ tbody tr.hide td i{
     color: #fff;
 }
 
-#cadastrar{
+.cadastrar{
     width: 200px;
     padding: 10px;
     margin-top: 30px ;
@@ -751,7 +751,7 @@ tbody tr.hide td i{
     color: #fff;
 }
 
-#cadastrar:hover{
+.cadastrar:hover{
     background: #82c3e9;
 }
 

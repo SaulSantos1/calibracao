@@ -24,123 +24,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for row in list_calibracao %}
                     <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-001</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
+                        <td data-label="Tag">{{row[0]}}</td>
+                        <td data-label="Equip">{{row[1]}}</td>
+                        <td data-label="Setor">{{row[3]}}</td>
+                        <td data-label="Ult.Calib">{{row[6]}}</td>
+                        <td data-label="Periodicidade">{{row[7]}}</td>
+                        <td data-label="Status">A Calibrar</td>
+                        <td data-label="Prox.Calib">{{row[10]}} - {{row[7]}} meses</td>
                     </tr>
-                    <tr class="modal-trigger"> 
-                        <td data-label="Tag">MEC-CQ-002</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-003</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-004</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-005</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-006</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-007</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-008</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-009</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-010</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-011</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-012</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
-                    <tr class="modal-trigger">
-                        <td data-label="Tag">MEC-CQ-013</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                        <td data-label="Periodicidade">12</td>
-                        <td data-label="Status">Calibrado</td>
-                        <td data-label="Prox.Calib">21/06/2024 - 12 meses</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
