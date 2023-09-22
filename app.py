@@ -62,6 +62,16 @@ def inicio():
                 *,
                 CAST (data_calibracao+(periodicidade||'months')::interval AS date) 
             FROM calibracao.tb_cadastro_tags """)
+    
+    query = (""" SELECT *
+                FROM tb_matriculas;""")
+    
+    cur.execute(query)
+    data_matricula = cur.fetchall()
+    df_data_matricula = pd.DataFrame(data_matricula)
+    lista_responsavel = df_data_matricula[2].values.tolist()
+    lista_matricula = df_data_matricula[1].values.tolist()
+    responsaveis = [f"{mat} - {resp}" for mat, resp in zip(lista_matricula,lista_responsavel)]
 
     cur.execute(s)
     data = cur.fetchall()
@@ -69,7 +79,7 @@ def inicio():
 
     list_calibracao = df.values.tolist()
 
-    return render_template("home_calibracao.html", list_calibracao=list_calibracao)
+    return render_template("home_calibracao.html", list_calibracao=list_calibracao,responsaveis=responsaveis)
 
 @app.route('/cadastro_equip', methods=['GET','POST'])
 @login_required
@@ -169,8 +179,9 @@ def cadastrar_tag():
     periodicidade = request.form.get('tag_periodicidade')
     nominal = request.form.get('tag_nominal')
     localizacao = request.form.get('tag_localizacao')
+    status = request.form.get('tag_status')
 
-    print(tag,equipamento,unidade,localizacao,responsavel,controle,data_tag,periodicidade,metodo,nominal)
+    print(tag,equipamento,unidade,localizacao,responsavel,controle,data_tag,periodicidade,metodo,nominal,status)
     
     cur.execute(""" select MAX(CAST (RIGHT (tag,3) as int)) + 1 as id_tag 
                     from calibracao.tb_cadastro_tags
@@ -178,20 +189,40 @@ def cadastrar_tag():
     
     lista_tags = cur.fetchall()
 
-    if lista_tags[0][0] >= 10:
+    valor_lista_tags = lista_tags[0]
+
+    if valor_lista_tags == [None]:
+        lista_tags = 1
+        nova_tag =  tag + '-00' + str(lista_tags)
+    elif valor_lista_tags[0] >= 10:
         nova_tag = tag + '-0' + str(lista_tags[0][0])
     else:
         nova_tag = tag + '-00' + str(lista_tags[0][0])
 
     cur.execute("""INSERT INTO calibracao.tb_cadastro_tags (tag,equipamento,unidade,localizacao,
-                responsavel,tipo_controle,data_calibracao,periodicidade,metodo,faixa_nominal) 
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(nova_tag,equipamento,unidade,localizacao,responsavel,controle,
-                                                           data_tag,periodicidade,metodo,nominal))
+                responsavel,tipo_controle,data_calibracao,periodicidade,metodo,faixa_nominal,status) 
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",(nova_tag,equipamento,unidade,localizacao,responsavel,controle,
+                                                           data_tag,periodicidade,metodo,nominal,status))
     conn.commit()
 
     conn.close()
 
     return redirect(url_for('cadastro'))
+
+@app.route('/editar_tag',methods=['POST'])
+@login_required
+def editar_tag():
+    conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    tag = request.form.get('tag')
+    emt = request.form.get('emt')
+    ema = request.form.get('ema')
+    data_calib = request.form.get('data_calib')
+
+    print(tag,emt,ema,data_calib)
+
+    return render_template('home_calibracao.html')
 
 @app.route('/relacao')
 @login_required

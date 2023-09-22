@@ -283,7 +283,6 @@ h2 {
 input[readonly] {
     background-color: #e9e9e9; /* Cor de fundo cinza */
     color: #888; /* Cor do texto cinza */
-    cursor: not-allowed; /* Altera o cursor para indicar que o input é somente leitura */
 }
 
 .mult-select-tag .input-container {

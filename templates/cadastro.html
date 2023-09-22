@@ -164,6 +164,17 @@
                     </select>
                   </div>
                 </div>
+                <div class="form-row">
+                <div class="form-group" style="margin-top: 20px;">
+                  <label for="tag_status">Status</label>
+                  <select class="form-control" style="height: 38px;" name="tag_status" id="tag_status">
+                    <option value="" selected disabled hidden></option>  
+                    <option>A Calibrar</option>
+                    <option>Em Calibração</option>
+                    <option>Calibrado</option>
+                  </select>
+                </div>
+              </div>
               <div>
                   <button class="cadastrar" id="cadastrarBtn">Cadastrar Tag</button>
                </div>
@@ -268,6 +279,7 @@
     var tag_periodicidade = $('#tag_periodicidade').val();
     var tag_nominal = $('#tag_nominal').val();
     var tag_localizacao = $('#tag_localizacao').val();
+    var tag_status = $('#tag_status').val();
 
     $.ajax({
         url: '/cadastrar_tag',
@@ -282,7 +294,8 @@
           tag_data: tag_data,
           tag_periodicidade: tag_periodicidade,
           tag_nominal:tag_nominal,
-          tag_localizacao:tag_localizacao
+          tag_localizacao:tag_localizacao,
+          tag_status:tag_status
           // inclua outros dropdowns aqui
         },
         success: function(response) {
@@ -297,6 +310,7 @@
           var tag_periodicidade = response.tag_periodicidade;
           var tag_nominal = response.tag_nominal;
           var tag_localizacao = response.tag_localizacao;
+          var tag_status = response.tag_status
 
           window.location.reload();
           // faça o processamento necessário para atualizar o DataFrame na página

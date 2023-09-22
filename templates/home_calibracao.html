@@ -26,13 +26,18 @@
                 <tbody>
                     {% for row in list_calibracao %}
                     <tr class="modal-trigger">
-                        <td data-label="Tag">{{row[0]}}</td>
+                        <td data-label="Tag" class="tag-value">{{row[0]}}</td>
                         <td data-label="Equip">{{row[1]}}</td>
-                        <td data-label="Setor">{{row[3]}}</td>
+                        <td data-label="Unidade" style="display: none;">{{row[2]}}</td>
+                        <td data-label="Localizacao">{{row[3]}}</td>
+                        <td data-label="Responsavel" style="display: none;">{{row[4]}}</td>
+                        <td data-label="Tipo de Controle" style="display: none;">{{row[5]}}</td>
                         <td data-label="Ult.Calib">{{row[6]}}</td>
                         <td data-label="Periodicidade">{{row[7]}}</td>
-                        <td data-label="Status">A Calibrar</td>
-                        <td data-label="Prox.Calib">{{row[10]}} - {{row[7]}} meses</td>
+                        <td data-label="Metodo" style="display: none;">{{row[8]}}</td>
+                        <td data-label="Faixa Nominal" style="display: none;">{{row[9]}}</td>
+                        <td data-label="Status">{{row[10]}}</td>
+                        <td data-label="Prox.Calib">{{row[13]}} - {{row[7]}} meses</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -181,46 +186,60 @@
                         </div>
                         <div class="form-row">
                           <div class="form-group">
-                            <label for="editar_salario">Unidade</label>
-                            <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario" readonly="readonly">
+                            <label>Unidade</label>
+                            <input type="text" class="form-control" style="height: 38px;" name="editar_unidade" id="editar_unidade" readonly="readonly">
                           </div>
-                        
                         <div class="form-group">
-                          <label for="editar_funcao">Localização</label>
-                          <input type="text" class="form-control" style="height: 38px;" name="editar_funcao" id="editar_funcao">
+                          <label>Localização</label>
+                          <input type="text" class="form-control" style="height: 38px;" name="editar_localizacao" id="editar_localizacao" readonly="readonly">
                         </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group" >
-                              <label for="editar_nome">Responsável</label>
-                              <input type="text" class="form-control" style="height: 38px;" name="editar_nome" id="editar_nome">
+                              <label>Responsável</label>
+                              <input type="text" class="form-control" style="height: 38px;" name="editar_responsavel" id="editar_responsavel" readonly="readonly">
                             </div>
-                    
                             <div class="form-group">
-                              <label for="editar_matricula">Tipo de Controle</label>
-                              <input type="text" class="form-control" style="height: 38px;" name="editar_matricula" id="editar_matricula" readonly="readonly">
+                              <label>Tipo de Controle</label>
+                              <input type="text" class="form-control" style="height: 38px;" name="editar_controle" id="editar_controle" readonly="readonly">
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group">
-                              <label for="editar_salario">Periodicidade</label>
-                              <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario" readonly="readonly">
+                              <label>Periodicidade</label>
+                              <input type="number" class="form-control" style="height: 38px;" name="editar_periodicidade" id="editar_periodicidade" readonly="readonly">
                             </div>
                             <div class="form-group">
-                              <label for="editar_salario">Método</label>
-                              <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario" readonly="readonly">
+                              <label>Método</label>
+                              <input type="text" class="form-control" style="height: 38px;" name="editar_metodo" id="editar_metodo" readonly="readonly">
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group">
-                              <label for="editar_salario">EMT</label>
-                              <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                              <label>Última Calibração</label>
+                              <input type="date" class="form-control" style="height: 38px;" name="editar_ult_calibracao" id="editar_ult_calibracao" readonly="readonly">
                             </div>
                             <div class="form-group">
-                              <label for="editar_salario">EMA</label>
-                              <input type="number" class="form-control" style="height: 38px;" name="editar_salario" id="editar_salario">
+                              <label>Status</label>
+                              <input type="text" class="form-control" style="height: 38px;" name="editar_status" id="editar_status" readonly="readonly">
                             </div>
                           </div>
+                          <div class="form-row">
+                            <div class="form-group">
+                              <label for="editar_emt">EMT</label>
+                              <input type="number" class="form-control" style="height: 38px;" name="editar_emt" id="editar_emt">
+                            </div>
+                            <div class="form-group">
+                              <label for="editar_ema">EMA</label>
+                              <input type="number" class="form-control" style="height: 38px;" name="editar_ema" id="editar_ema">
+                            </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label>Data de Calibração</label>
+                                <input type="date" class="form-control" style="height: 38px;" name="editar_data_calib" id="editar_data_calib">
+                            </div>
+                        </div>
                         <div>
                             <button id="ganhar">Confirmar</button>
                          </div>
@@ -315,10 +334,10 @@
                                 </tbody>
                             </table>
                         </section>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </div>
 </main>
 <div id="loading-overlay" style="display: none;">
     <div id="loading-spinner"></div>
@@ -359,43 +378,72 @@
 </script>
 <script>
    function showModalGanhar(event) {
-
+    $("#loading-overlay").show();
     const isTable1 = event.currentTarget.closest('.table-1') !== null;
     const isTable2 = event.currentTarget.closest('.table-2') !== null;
     if (isTable1) {
-            // Código para a Tabela 1
-            const tag = event.currentTarget.querySelector('td').textContent;
-            $.ajax({
-                success: function () {
-                    // Defina o texto do título do modal com base na 'tag'
-                    $('.modal-title').text(tag);
+        // Código para a Tabela 1
+        const tag = event.currentTarget.querySelector('td').textContent;
+        const equip = event.currentTarget.querySelector('td[data-label="Equip"]').textContent;
+        console.log(equip)
+        const unidade = event.currentTarget.querySelector('td[data-label="Unidade"]').textContent;
+        console.log(unidade)
+        const localizacao = event.currentTarget.querySelector('td[data-label="Localizacao"]').textContent;
+        const responsavel = event.currentTarget.querySelector('td[data-label="Responsavel"]').textContent;
+        const tipoControle = event.currentTarget.querySelector('td[data-label="Tipo de Controle"]').textContent;
+        const ult_calibracao = event.currentTarget.querySelector('td[data-label="Ult.Calib"]').textContent;
+        console.log(ult_calibracao)
+        const periodicidade = event.currentTarget.querySelector('td[data-label="Periodicidade"]').textContent;
+        const metodo = event.currentTarget.querySelector('td[data-label="Metodo"]').textContent;
+        console.log(metodo)
+        const faixaNominal = event.currentTarget.querySelector('td[data-label="Faixa Nominal"]').textContent;
+        const status = event.currentTarget.querySelector('td[data-label="Status"]').textContent;
 
-                    // Exiba o modal
-                    $('#modalGanhar').modal('show');
-                    $('#modalGanhar').on('show.bs.modal', function () {
-                        $('body').addClass('modal-open');
-                    });
+        $.ajax({
+            success: function () {
+                // Defina o texto do título do modal com base na 'tag'
+                $("#loading-overlay").hide();
+                $('.modal-title').text(tag);
 
-                    setTimeout(function() {
-                        modal.style.display = 'block';
-                    }, 1000);
-                    // Fechar o modal ao clicar no botão de fechar
-                    $('#modalGanhar').on('click', '.close', function () {
-                        $('#modalGanhar').modal('hide');
-                        $('body').removeClass('modal-open');
-                    });
-                },
-                error: function (error) {
-                    alert('Essa Ordem de Serviço não contém imagem ou vídeo');
-                    console.log(error);
-                }
-            });
+                // Defina os valores dos campos de entrada no modal
+                $('#editar_nome').val(equip);
+                $('#editar_matricula').val(faixaNominal);
+                $('#editar_unidade').val(unidade);
+                $('#editar_localizacao').val(localizacao);
+                $('#editar_responsavel').val(responsavel);
+                $('#editar_controle').val(tipoControle);
+                $('#editar_periodicidade').val(periodicidade);
+                $('#editar_metodo').val(metodo);
+                $('#editar_ult_calibracao').val(ult_calibracao);
+                $('#editar_status').val(status);
+    
+                // Exiba o modal
+                $('#modalGanhar').modal('show');
+                $('#modalGanhar').on('show.bs.modal', function () {
+                    $('body').addClass('modal-open');
+                });
+
+                setTimeout(function () {
+                    modal.style.display = 'block';
+                }, 1000);
+                // Fechar o modal ao clicar no botão de fechar
+                $('#modalGanhar').on('click', '.close', function () {
+                    $('#modalGanhar').modal('hide');
+                    $('body').removeClass('modal-open');
+                });
+            },
+            error: function (error) {
+                alert('Essa Ordem de Serviço não contém imagem ou vídeo');
+                console.log(error);
+            }
+        });
         } else if (isTable2) {
             // Código para a Tabela 1
             const tag = event.currentTarget.querySelector('td').textContent;
             $.ajax({
                 success: function () {
                     // Defina o texto do título do modal com base na 'tag'
+                    $("#loading-overlay").hide();
                     $('.modal-title').text("Histórico: " + tag);
 
                     // Exiba o modal
@@ -427,6 +475,48 @@ const trElements = document.querySelectorAll('tr');
 trElements.forEach(function(tr) {
     tr.addEventListener('click', showModalGanhar);
 });
- </script>
+</script>
+
+<script>
+    function editarTag() {
+
+    $("#loading-overlay").show();
+
+    var tag = document.querySelector('.tag-value');
+    var emt = $('#editar_emt').val();
+    var ema = $('#editar_ema').val();
+    var data_calib = $('#editar_data_calib').val();
+
+    $.ajax({
+        url: '/editar_tag',
+        method: 'POST',
+        data: {
+            tag: tag,
+            emt:emt,
+            ema:ema,
+            data_calib:data_calib
+        },
+        success: function (response) {
+            var tag = response.tag;
+            var emt = response.emt;
+            var ema = response.ema;
+            var data_calib = response.data_calib;
+
+            window.location.reload();
+
+            $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+        },
+        error: function (error) {
+            console.log(error);
+            $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+        }
+    });
+}
+// Obtém o botão com o ID "ganhar"
+const botaoGanhar = document.getElementById('ganhar');
+
+// Adiciona um ouvinte de evento de clique ao botão
+botaoGanhar.addEventListener('click', editarTag);
+</script>
 
 {% endblock %}
