@@ -2,6 +2,15 @@
 {% block body %}
 
 <main class="principal">
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert-success alert-dismissible fade show" id="alerta_Os" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     <div class="table table-1" style="margin: 40px; margin-left: 20px;">
         <section class="table__header">
             <h1>Calibração Plano-Mestre</h1>
@@ -25,8 +34,8 @@
                 </thead>
                 <tbody>
                     {% for row in list_calibracao %}
-                    <tr class="modal-trigger">
-                        <td data-label="Tag" class="tag-value">{{row[0]}}</td>
+                    <tr class="modal-trigger" onclick="pegarValor('{{ row[0] }}')">
+                        <td data-label="Tag">{{ row[0] }}</td>
                         <td data-label="Equip">{{row[1]}}</td>
                         <td data-label="Unidade" style="display: none;">{{row[2]}}</td>
                         <td data-label="Localizacao">{{row[3]}}</td>
@@ -55,15 +64,6 @@
         <div class="select-group">
             <select name="ordemproducao" id="ordemproducao" multiple>
                 <option value="MEC-CQ-001">MEC-CQ-001</option>
-                <option value="MEC-CQ-002">MEC-CQ-002</option>
-                <option value="MEC-CQ-003">MEC-CQ-003</option>
-                <option value="MEC-CQ-004">MEC-CQ-004</option>
-                <option value="MEC-CQ-005">MEC-CQ-005</option>
-                <option value="MEC-CQ-006">MEC-CQ-006</option>
-                <option value="MEC-CQ-007">MEC-CQ-007</option>
-                <option value="MEC-CQ-008">MEC-CQ-008</option>
-                <option value="MEC-CQ-009">MEC-CQ-009</option>
-                <option value="MEC-CQ-010">MEC-CQ-010</option>
             </select>
             <button id="filtrarOrdem" type="submit" class="btn btn-light" style=" margin-left: 10px;">Filtrar</button>
         </div>
@@ -78,84 +78,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for lista in list_tabela %}
                     <tr>
-                        <td data-label="Tag">MEC-CQ-001</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
+                        <td data-label="Tag">{{ lista[0] }}</td>
+                        <td data-label="Equip">{{lista[1]}}</td>
+                        <td data-label="Setor">{{lista[2]}}</td>
+                        <td data-label="Data Ult. Calibração">{{lista[3]}}</td>
                     </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-002</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-003</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-004</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-005</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-006</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-007</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-008</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-009</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-010</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-010</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-010</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Tag">MEC-CQ-010</td>
-                        <td data-label="Equip">Relógio Comparador</td>
-                        <td data-label="Setor">Controle de Qualidade</td>
-                        <td data-label="Ult.Calib">21/06/2023</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
@@ -385,17 +315,13 @@
         // Código para a Tabela 1
         const tag = event.currentTarget.querySelector('td').textContent;
         const equip = event.currentTarget.querySelector('td[data-label="Equip"]').textContent;
-        console.log(equip)
         const unidade = event.currentTarget.querySelector('td[data-label="Unidade"]').textContent;
-        console.log(unidade)
         const localizacao = event.currentTarget.querySelector('td[data-label="Localizacao"]').textContent;
         const responsavel = event.currentTarget.querySelector('td[data-label="Responsavel"]').textContent;
         const tipoControle = event.currentTarget.querySelector('td[data-label="Tipo de Controle"]').textContent;
         const ult_calibracao = event.currentTarget.querySelector('td[data-label="Ult.Calib"]').textContent;
-        console.log(ult_calibracao)
         const periodicidade = event.currentTarget.querySelector('td[data-label="Periodicidade"]').textContent;
         const metodo = event.currentTarget.querySelector('td[data-label="Metodo"]').textContent;
-        console.log(metodo)
         const faixaNominal = event.currentTarget.querySelector('td[data-label="Faixa Nominal"]').textContent;
         const status = event.currentTarget.querySelector('td[data-label="Status"]').textContent;
 
@@ -478,45 +404,94 @@ trElements.forEach(function(tr) {
 </script>
 
 <script>
-    function editarTag() {
+    var tagValue; // Declare a variável tagValue aqui
+    
+    function pegarValor(tag) {
+        tagValue = tag; // Atribua o valor da tag à variável tagValue
+        console.log("Valor da Tag: " + tagValue);
+    }
+    
+    $(document).ready(function() {
+        $("#ganhar").click(function(event) {
+            $("#loading-overlay").show();
+            if (tagValue !== undefined) {
+                // Resto do seu código ...
+                console.log("Entrou: " + tagValue);
+                
+                // Obtém os valores de editar_emt, editar_ema, editar_data_calib como você já fez
+                var editar_emt = $('#editar_emt').val();
+                var editar_ema = $('#editar_ema').val();
+                var editar_data_calib = $('#editar_data_calib').val();
+                
+                
+                if (editar_emt === "" || editar_ema === "" || editar_data_calib === "") {
+                    // Exibe um alerta
+                    alert("Por favor, preencha todos os campos.");
 
-    $("#loading-overlay").show();
+                    // Oculta a sobreposição de carregamento e não envia a solicitação
+                    $("#loading-overlay").hide();
+                    return;
+                } else {
+                    // Se todos os campos estiverem preenchidos, continue com a solicitação AJAX
+                    var data = {
+                        tagValue: tagValue,
+                        editar_emt: editar_emt,
+                        editar_ema: editar_ema,
+                        editar_data_calib: editar_data_calib
+                    };
+                }
+                // Faça a solicitação AJAX com os dados
+                $.ajax({
+                    url: '/editar_tag',
+                    method: 'POST',
+                    data: data,
+                    success: function(response) {
+                        // Lide com a resposta do servidor, se necessário
+                        console.log("Resposta do servidor:", response);
+                        window.location.reload();
+                    },
+                    error: function(error) {
+                        console.error("Erro na solicitação AJAX:", error);
+                        $("#loading-overlay").hide();
+                    }
+                });
+            } else {
+                console.log("tagValue não está definida.");
+            }
+        });
+    });
+    </script>
 
-    var tag = document.querySelector('.tag-value');
-    var emt = $('#editar_emt').val();
-    var ema = $('#editar_ema').val();
-    var data_calib = $('#editar_data_calib').val();
+    <script>
 
+$(document).ready(function() {
     $.ajax({
-        url: '/editar_tag',
-        method: 'POST',
-        data: {
-            tag: tag,
-            emt:emt,
-            ema:ema,
-            data_calib:data_calib
-        },
-        success: function (response) {
-            var tag = response.tag;
-            var emt = response.emt;
-            var ema = response.ema;
-            var data_calib = response.data_calib;
+        type: "GET",
+        url: "/historico", // A rota para a qual você deseja fazer a solicitação GET
+        success: function(data) {
+            // Manipule os dados retornados aqui e insira-os na div
+            var tabelaHTML = "<table>";
+            tabelaHTML += "<thead><tr><th>Tag</th><th>Equipamento</th><th>Localização</th><th>Data de Calibração</th></tr></thead><tbody>";
 
-            window.location.reload();
+            for (var i = 0; i < data.length; i++) {
+                tabelaHTML += "<tr>";
+                tabelaHTML += "<td>" + data[i]['tag'] + "</td>";
+                tabelaHTML += "<td>" + data[i]['equipamento'] + "</td>";
+                tabelaHTML += "<td>" + data[i]['localizacao'] + "</td>";
+                tabelaHTML += "<td>" + data[i]['data_calib'] + "</td>";
+                tabelaHTML += "</tr>";
+            }
 
-            $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+            tabelaHTML += "</tbody></table>";
+
+            // Insira a tabela HTML na div
+            $("#dados-tabela").html(tabelaHTML);
         },
-        error: function (error) {
-            console.log(error);
-            $("#loading-overlay").hide(); // Oculta o overlay após atualizar os dados
+        error: function() {
+            console.error("Erro ao fazer a solicitação AJAX.");
         }
     });
-}
-// Obtém o botão com o ID "ganhar"
-const botaoGanhar = document.getElementById('ganhar');
+});
 
-// Adiciona um ouvinte de evento de clique ao botão
-botaoGanhar.addEventListener('click', editarTag);
 </script>
-
 {% endblock %}

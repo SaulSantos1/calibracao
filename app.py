@@ -40,7 +40,7 @@ def login():
             session['username'] = user['email']
             return redirect(url_for('inicio'))
         else:
-            pass
+            flash('Usuário ou Senha inválida', category='error')
     return render_template("login.html")
 
 @app.route('/logout')
@@ -50,10 +50,10 @@ def logout(): # Botão de logout
 	session.pop('username', None)
 	return redirect(url_for('login'))
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 @login_required
 def inicio(): 
-    
+
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
                             password=DB_PASS, host=DB_HOST)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -66,6 +66,27 @@ def inicio():
     query = (""" SELECT *
                 FROM tb_matriculas;""")
     
+    query_historico = """ WITH ranked_tags AS (
+                SELECT
+                    rt.tag,
+                    ct.equipamento,
+                    ct.localizacao,
+                    rt.data_calib,
+                    ROW_NUMBER() OVER (PARTITION BY rt.tag ORDER BY rt.data_calib DESC) AS row_num
+                FROM
+                    calibracao.tb_registro_tags rt
+                    LEFT JOIN calibracao.tb_cadastro_tags ct ON rt.tag = ct.tag
+                )
+                SELECT tag, equipamento, localizacao,data_calib
+                FROM ranked_tags
+                WHERE row_num = 1;"""
+    
+    cur.execute(query_historico)
+    data_historico = cur.fetchall()
+    tabela = pd.DataFrame(data_historico)
+
+    list_tabela = tabela.values.tolist()
+
     cur.execute(query)
     data_matricula = cur.fetchall()
     df_data_matricula = pd.DataFrame(data_matricula)
@@ -78,8 +99,8 @@ def inicio():
     df = pd.DataFrame(data)
 
     list_calibracao = df.values.tolist()
-
-    return render_template("home_calibracao.html", list_calibracao=list_calibracao,responsaveis=responsaveis)
+    
+    return render_template("home_calibracao.html", list_calibracao=list_calibracao,responsaveis=responsaveis,list_tabela=list_tabela)
 
 @app.route('/cadastro_equip', methods=['GET','POST'])
 @login_required
@@ -212,17 +233,23 @@ def cadastrar_tag():
 @app.route('/editar_tag',methods=['POST'])
 @login_required
 def editar_tag():
+
     conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    tag = request.form.get('tag')
-    emt = request.form.get('emt')
-    ema = request.form.get('ema')
-    data_calib = request.form.get('data_calib')
+    tagValue= request.form.get('tagValue')
+    editar_emt = request.form.get('editar_emt')
+    editar_ema = request.form.get('editar_ema')
+    editar_data_calib = request.form.get('editar_data_calib')
 
-    print(tag,emt,ema,data_calib)
+    cur.execute("""INSERT INTO calibracao.tb_registro_tags (tag, ema, emt, data_calib) 
+                VALUES (%s,%s,%s,%s)""",(tagValue,editar_ema,editar_emt,editar_data_calib))
 
-    return render_template('home_calibracao.html')
+    conn.commit()
+
+    conn.close()
+
+    return redirect(url_for('inicio'))
 
 @app.route('/relacao')
 @login_required
