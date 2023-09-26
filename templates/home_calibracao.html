@@ -63,7 +63,9 @@
         </section>
         <div class="select-group">
             <select name="ordemproducao" id="ordemproducao" multiple>
-                <option value="MEC-CQ-001">MEC-CQ-001</option>
+                {% for lista in list_tabela %}
+                <option value="{{ lista[0] }}">{{ lista[0] }}</option>
+                {% endfor %}
             </select>
             <button id="filtrarOrdem" type="submit" class="btn btn-light" style=" margin-left: 10px;">Filtrar</button>
         </div>
@@ -79,7 +81,7 @@
                 </thead>
                 <tbody>
                     {% for lista in list_tabela %}
-                    <tr>
+                    <tr class="modal-trigger">
                         <td data-label="Tag">{{ lista[0] }}</td>
                         <td data-label="Equip">{{lista[1]}}</td>
                         <td data-label="Setor">{{lista[2]}}</td>
@@ -169,6 +171,10 @@
                                 <label>Data de Calibração</label>
                                 <input type="date" class="form-control" style="height: 38px;" name="editar_data_calib" id="editar_data_calib">
                             </div>
+                            <div class="form-group">
+                                <label for="editar_url">URL</label>
+                                <input type="url" class="form-control" style="height: 38px;" name="editar_url" id="editar_url">
+                            </div>
                         </div>
                         <div>
                             <button id="ganhar">Confirmar</button>
@@ -201,66 +207,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">3</td>
-                                        <td data-label="Equip">28/08/2023</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
+                                    {% for lista in lista_historico %}
+                                    <tr style="cursor: default;">
+                                        <td data-label="N° Calibração">{{lista[2]}}</td>
+                                        <td data-label="Data">{{lista[0]}}</td>
+                                        <td data-label="Download">{{lista[1]}}</td>
                                     </tr>
-                                    <tr class="modal-trigger"> 
-                                        <td data-label="Tag">2</td>
-                                        <td data-label="Equip">28/08/2022</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
-                                    <tr class="modal-trigger">
-                                        <td data-label="Tag">1</td>
-                                        <td data-label="Equip">28/08/2021</td>
-                                        <td data-label="Setor"><i class="fa-solid fa-download" style="font-size: 14px; cursor: pointer;"></i></td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </section>
@@ -284,126 +237,6 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const filtrarButton = document.getElementById("filtrarOrdem");
-        filtrarButton.addEventListener("click", function() {
-            const select = document.getElementById("ordemproducao");
-            const selectedValues = Array.from(select.selectedOptions).map(option => option.value);
-
-            // Seleciona a tabela com o título "Ordem de Produção"
-            const tabelaOrdemProducao = document.querySelector(".table:nth-of-type(2)"); // A segunda tabela
-
-            // Seleciona apenas as linhas da tabela "Ordem de Produção"
-            const tableRows = tabelaOrdemProducao.querySelectorAll(".table__body tbody tr");
-            tableRows.forEach(row => {
-                const codigo = row.querySelector("td:first-child").textContent;
-                if (selectedValues.length === 0 || selectedValues.includes(codigo)) {
-                    row.style.display = "table-row";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        });
-    });
-</script>
-<script>
-   function showModalGanhar(event) {
-    $("#loading-overlay").show();
-    const isTable1 = event.currentTarget.closest('.table-1') !== null;
-    const isTable2 = event.currentTarget.closest('.table-2') !== null;
-    if (isTable1) {
-        // Código para a Tabela 1
-        const tag = event.currentTarget.querySelector('td').textContent;
-        const equip = event.currentTarget.querySelector('td[data-label="Equip"]').textContent;
-        const unidade = event.currentTarget.querySelector('td[data-label="Unidade"]').textContent;
-        const localizacao = event.currentTarget.querySelector('td[data-label="Localizacao"]').textContent;
-        const responsavel = event.currentTarget.querySelector('td[data-label="Responsavel"]').textContent;
-        const tipoControle = event.currentTarget.querySelector('td[data-label="Tipo de Controle"]').textContent;
-        const ult_calibracao = event.currentTarget.querySelector('td[data-label="Ult.Calib"]').textContent;
-        const periodicidade = event.currentTarget.querySelector('td[data-label="Periodicidade"]').textContent;
-        const metodo = event.currentTarget.querySelector('td[data-label="Metodo"]').textContent;
-        const faixaNominal = event.currentTarget.querySelector('td[data-label="Faixa Nominal"]').textContent;
-        const status = event.currentTarget.querySelector('td[data-label="Status"]').textContent;
-
-        $.ajax({
-            success: function () {
-                // Defina o texto do título do modal com base na 'tag'
-                $("#loading-overlay").hide();
-                $('.modal-title').text(tag);
-
-                // Defina os valores dos campos de entrada no modal
-                $('#editar_nome').val(equip);
-                $('#editar_matricula').val(faixaNominal);
-                $('#editar_unidade').val(unidade);
-                $('#editar_localizacao').val(localizacao);
-                $('#editar_responsavel').val(responsavel);
-                $('#editar_controle').val(tipoControle);
-                $('#editar_periodicidade').val(periodicidade);
-                $('#editar_metodo').val(metodo);
-                $('#editar_ult_calibracao').val(ult_calibracao);
-                $('#editar_status').val(status);
-    
-                // Exiba o modal
-                $('#modalGanhar').modal('show');
-                $('#modalGanhar').on('show.bs.modal', function () {
-                    $('body').addClass('modal-open');
-                });
-
-                setTimeout(function () {
-                    modal.style.display = 'block';
-                }, 1000);
-                // Fechar o modal ao clicar no botão de fechar
-                $('#modalGanhar').on('click', '.close', function () {
-                    $('#modalGanhar').modal('hide');
-                    $('body').removeClass('modal-open');
-                });
-            },
-            error: function (error) {
-                alert('Essa Ordem de Serviço não contém imagem ou vídeo');
-                console.log(error);
-            }
-        });
-        } else if (isTable2) {
-            // Código para a Tabela 1
-            const tag = event.currentTarget.querySelector('td').textContent;
-            $.ajax({
-                success: function () {
-                    // Defina o texto do título do modal com base na 'tag'
-                    $("#loading-overlay").hide();
-                    $('.modal-title').text("Histórico: " + tag);
-
-                    // Exiba o modal
-                    $('#modalGanhar2').on('show.bs.modal', function () {
-                        $('body').addClass('modal-open');
-                    });
-                    $('#modalGanhar2').modal('show');
-
-                    setTimeout(function() {
-                        modal.style.display = 'block';
-                    }, 1000);
-                    // Fechar o modal ao clicar no botão de fechar
-                    $('#modalGanhar2').on('click', '.close', function () {
-                        $('#modalGanhar2').modal('hide');
-                        $('body').removeClass('modal-open');
-                    });
-                },
-                error: function (error) {
-                    alert('Essa Ordem de Serviço não contém imagem ou vídeo');
-                    console.log(error);
-                }
-            });
-        }
-    }
-// Obtém todos os elementos 'tr' na tabela
-const trElements = document.querySelectorAll('tr');
-
-// Adiciona um ouvinte de eventos de clique a cada 'tr'
-trElements.forEach(function(tr) {
-    tr.addEventListener('click', showModalGanhar);
-});
-</script>
-
-<script>
     var tagValue; // Declare a variável tagValue aqui
     
     function pegarValor(tag) {
@@ -415,13 +248,11 @@ trElements.forEach(function(tr) {
         $("#ganhar").click(function(event) {
             $("#loading-overlay").show();
             if (tagValue !== undefined) {
-                // Resto do seu código ...
-                console.log("Entrou: " + tagValue);
-                
                 // Obtém os valores de editar_emt, editar_ema, editar_data_calib como você já fez
                 var editar_emt = $('#editar_emt').val();
                 var editar_ema = $('#editar_ema').val();
                 var editar_data_calib = $('#editar_data_calib').val();
+                var editar_url = $('#editar_url').val();
                 
                 
                 if (editar_emt === "" || editar_ema === "" || editar_data_calib === "") {
@@ -437,7 +268,8 @@ trElements.forEach(function(tr) {
                         tagValue: tagValue,
                         editar_emt: editar_emt,
                         editar_ema: editar_ema,
-                        editar_data_calib: editar_data_calib
+                        editar_data_calib: editar_data_calib,
+                        editar_url: editar_url
                     };
                 }
                 // Faça a solicitação AJAX com os dados
@@ -461,37 +293,4 @@ trElements.forEach(function(tr) {
         });
     });
     </script>
-
-    <script>
-
-$(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: "/historico", // A rota para a qual você deseja fazer a solicitação GET
-        success: function(data) {
-            // Manipule os dados retornados aqui e insira-os na div
-            var tabelaHTML = "<table>";
-            tabelaHTML += "<thead><tr><th>Tag</th><th>Equipamento</th><th>Localização</th><th>Data de Calibração</th></tr></thead><tbody>";
-
-            for (var i = 0; i < data.length; i++) {
-                tabelaHTML += "<tr>";
-                tabelaHTML += "<td>" + data[i]['tag'] + "</td>";
-                tabelaHTML += "<td>" + data[i]['equipamento'] + "</td>";
-                tabelaHTML += "<td>" + data[i]['localizacao'] + "</td>";
-                tabelaHTML += "<td>" + data[i]['data_calib'] + "</td>";
-                tabelaHTML += "</tr>";
-            }
-
-            tabelaHTML += "</tbody></table>";
-
-            // Insira a tabela HTML na div
-            $("#dados-tabela").html(tabelaHTML);
-        },
-        error: function() {
-            console.error("Erro ao fazer a solicitação AJAX.");
-        }
-    });
-});
-
-</script>
 {% endblock %}

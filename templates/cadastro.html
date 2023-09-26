@@ -83,7 +83,7 @@
         
                 <div class="form-group" style="margin-top: 28px;">
                   <label for="tag_equipamento">Equipamento</label>
-                  <select class="form-control" style="height: 38px;" name="tag_equipamento" id="tag_equipamento" onchange="atualizarTag(); updateTag();">
+                  <select class="form-control" style="height: 38px;" name="tag_equipamento" id="tag_equipamento" onchange="atualizarTag(); updateTag(); copySelectedToClipboard();">
                     <option value="" selected disabled hidden></option>  
                     {% for equipamento in equipamentos %}
                     <option value="{{equipamento}}">{{equipamento}}</option>
@@ -159,8 +159,8 @@
                     <label for="tag_metodo">Método</label>
                     <select class="form-control" style="height: 38px;" name="tag_metodo" id="tag_metodo">
                       <option value="" selected disabled hidden></option>  
-                      <option>Dimensional</option>
-                      <option>Pressão</option>
+                      <option>Externo</option>
+                      <option>Interno</option>
                     </select>
                   </div>
                 </div>
@@ -481,6 +481,22 @@ function updateTag() {
     // Atualize o valor do campo tag
     document.getElementById('tag').value = tag;
 }
+
+// Copiar para área de transferência
+function copySelectedToClipboard() {
+    const selectedOption = document.getElementById("tag_equipamento").value;
+    if (selectedOption) {
+      // Cria um elemento de texto temporário para a cópia
+      const tempElement = document.createElement("textarea");
+      tempElement.value = selectedOption;
+      document.body.appendChild(tempElement);
+      tempElement.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempElement);
+    } else {
+      //pass
+    }
+  }
 
 </script>
 {% endblock %}

@@ -4,6 +4,7 @@ import psycopg2.extras
 from functools import wraps
 import pandas as pd
 import requests
+from datetime import date
 
 app = Flask(__name__)
 app.secret_key = "calibracao"
@@ -241,15 +242,44 @@ def editar_tag():
     editar_emt = request.form.get('editar_emt')
     editar_ema = request.form.get('editar_ema')
     editar_data_calib = request.form.get('editar_data_calib')
+    editar_url = request.form.get('editar_url')
 
-    cur.execute("""INSERT INTO calibracao.tb_registro_tags (tag, ema, emt, data_calib) 
-                VALUES (%s,%s,%s,%s)""",(tagValue,editar_ema,editar_emt,editar_data_calib))
+    cur.execute("""INSERT INTO calibracao.tb_registro_tags (tag, ema, emt, data_calib,link_certificado) 
+                VALUES (%s,%s,%s,%s,%s)""",(tagValue,editar_ema,editar_emt,editar_data_calib,editar_url))
 
     conn.commit()
 
     conn.close()
 
     return redirect(url_for('inicio'))
+
+@app.route('/modal_historico', methods=['POST','GET'])
+@login_required
+def modal_historico():
+
+    if request.method == 'POST':
+        conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        tagValue= request.form.get('tag')
+        
+        query = ("""SELECT data_calib, link_certificado,
+                    ROW_NUMBER() OVER (ORDER BY id) - 1 AS id_tag
+                FROM calibracao.tb_registro_tags
+                WHERE tag = '{}'""").format(tagValue)
+
+        cur.execute(query)
+        data = cur.fetchall()
+        tabela = pd.DataFrame(data)
+        
+        lista_historico = tabela.values.tolist()
+        for registro in lista_historico:
+            if registro[0] is not None:
+                registro[0] = registro[0].strftime('%d/%m/%Y')
+                
+        print(lista_historico)
+
+        return redirect(url_for('inicio', lista_historico=lista_historico))
 
 @app.route('/relacao')
 @login_required
