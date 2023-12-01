@@ -9,10 +9,10 @@ from datetime import date
 app = Flask(__name__)
 app.secret_key = "calibracao"
 
-DB_HOST = "database-1.cdcogkfzajf0.us-east-1.rds.amazonaws.com"
-DB_NAME = "postgres"
-DB_USER = "postgres"
-DB_PASS = "15512332"
+DB_HOST = ""
+DB_NAME = ""
+DB_USER = ""
+DB_PASS = ""
 
 def login_required(func): # Lógica do parâmetro de login_required, onde escolhe quais páginas onde apenas o usuário logado pode acessar
     @wraps(func)
